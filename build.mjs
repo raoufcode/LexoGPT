@@ -8,7 +8,7 @@ for (const target of ['chrome','firefox']) {
   await mkdir(path.join(out,'dict'),{recursive:true});
   await mkdir(path.join(out,'licenses'),{recursive:true});
   const manifest = {
-    manifest_version:3, name:'LexoGPT', version:'1.0.0',
+    manifest_version:3, name:'LexoGPT', version:'1.1.0',
     description:'Corrections et reformulations en français, anglais et espagnol, sur votre appareil.',
     permissions:['storage'], action:{default_title:'Lexo · Préférences',default_popup:'popup.html'},
     content_scripts:[{matches:['http://*/*','https://*/*'],js:['content.js'],all_frames:true}],

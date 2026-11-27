@@ -32,7 +32,7 @@ async function check({text, hint, mode, style}) {
     const original = match[0], start = match.index;
     if (original.length < 3 || original.length > 24 || original === original.toUpperCase() ||
         /[\d_]/.test(text[start-1] || ' ') || /[\d_]/.test(text[start+original.length] || ' ')) continue;
-    if (hits.some(h => start < h.start+h.original.length && start+original.length > h.start)) continue;
+    if (hits.some(h => h.kind !== 'Formulation' && start < h.start+h.original.length && start+original.length > h.start)) continue;
     const word = original.replaceAll('’', "'");
     if (spell.correct(word) || spell.correct(word.toLowerCase())) continue;
     const choices = spell.suggest(word).slice(0,3);

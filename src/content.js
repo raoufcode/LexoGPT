@@ -8,11 +8,12 @@
   const shadow = host.attachShadow({mode:'closed'});
   const css = document.createElement('style');
   css.textContent = `
-    *{box-sizing:border-box} section{font:14px/1.45 system-ui,sans-serif;color:#1b2926;background:white;border:1px solid #bdd3cb;border-radius:14px;padding:14px;width:min(310px,92vw);box-shadow:0 5px 25px #172e2530}
+    *{box-sizing:border-box} section{font:14px/1.45 system-ui,sans-serif;color:#1b2926;background:white;border:1px solid #bdd3cb;border-radius:14px;padding:14px;width:min(390px,92vw);max-height:80vh;overflow:auto;box-shadow:0 5px 25px #172e2530}
     button{font:inherit;border:1px solid #adc9bd;border-radius:8px;background:white;color:#174b3b;padding:5px 9px;cursor:pointer}
     button:focus-visible{outline:3px solid #349e83}button:hover{background:#e8f5ed}.badge,.choice{background:#145642;color:white}.badge:hover,.choice:hover{background:#21694e}
     .badge{font:600 14px system-ui;padding:8px 13px;border-radius:25px}
     header,footer,.options{display:flex;align-items:center;justify-content:space-between;gap:8px}.options{justify-content:flex-start;flex-wrap:wrap}
+    .variants{display:grid}.variant{display:grid;gap:3px;width:100%;text-align:left;background:#f4f8f5;color:#193e30;overflow-wrap:anywhere}.variant:hover{background:#dfefe5}.variant strong{font-size:12px}.variant:focus-visible{outline-offset:1px}
     small{color:#53665e}p{overflow-wrap:anywhere;margin:7px 0 12px}footer{margin-top:14px}
   `;
   shadow.append(css);
@@ -94,7 +95,19 @@
       head.append(title,meta); word.textContent = '« ' + hit.original + ' »';
       const options = document.createElement('div');
       options.className = 'options';
-      options.append(...hit.choices.map(c => button(c,() => apply(s,hit,c),'choice')));
+      if (hit.kind === 'Formulation') {
+        options.classList.add('variants');
+        const labels = ['Direct', 'Nuancé', 'Soutenu'];
+        hit.choices.forEach((choice, i) => {
+          const option = button('', () => apply(s,hit,choice), 'choice variant');
+          const tone = document.createElement('strong');
+          tone.textContent = labels[i];
+          option.append(tone, document.createTextNode(choice));
+          options.append(option);
+        });
+      } else {
+        options.append(...hit.choices.map(c => button(c,() => apply(s,hit,c),'choice')));
+      }
       const foot = document.createElement('footer');
       const page = document.createElement('small');
       page.textContent = (current+1)+' / '+hits.length;

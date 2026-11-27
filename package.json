@@ -1,6 +1,6 @@
 {
   "name": "lexogpt",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Assistant de rédaction multilingue hors ligne",
   "scripts": {
     "test": "node --test tests/rules.test.mjs",

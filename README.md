@@ -15,6 +15,8 @@ Recharger les pages déjà ouvertes. Sur Firefox, accorder l’accès aux sites 
 
 Écrire par exemple « Je vien de finir » dans une zone de texte. Après une courte pause, le bouton **Lexo** affiche le nombre de suggestions. Ouvrir le bouton et choisir **Je viens** pour appliquer uniquement cette modification. **Suivante** parcourt les propositions. Échap masque le panneau.
 
+Pour les tournures reconnues, le panneau présente trois versions de la phrase. **Direct**, **Nuancé** et **Soutenu** permettent de comparer le ton avant d’appliquer une variante. Par exemple, « Je vous écris pour vous demander si Léa vient demain » devient « J’aimerais savoir si Léa vient demain » dans la version nuancée.
+
 Dans le menu de l’extension, désactiver Lexo, choisir une langue ou masquer les reformulations. En mode automatique, Lexo utilise le détecteur du navigateur, puis des indices locaux. Pour les textes ambigus, elle utilise la langue déclarée du champ ou, à défaut, le français.
 
 ## Couverture

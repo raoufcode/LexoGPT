@@ -1,3 +1,4 @@
+import {rewrites} from './rewrites.mjs';
 const forms = {
   fr: {
     Grammaire: {
@@ -7,20 +8,13 @@ const forms = {
       'ils sont aller': 'ils sont allés', 'je suis aller': 'je suis allé',
       'vous faîtes': 'vous faites', 'nous somme': 'nous sommes', 'sa me': 'ça me',
       'je voudrais lexo détecte': 'je voudrais que Lexo détecte'
-    },
-    Formulation: {
-      'dans le but de': 'pour', 'au jour d’aujourd’hui': 'aujourd’hui',
-      "au jour d'aujourd'hui": 'aujourd’hui', 'dans la mesure où': 'puisque',
-      'il est nécessaire de': 'il faut', 'faire en sorte de': 'veiller à'
     }
   },
   en: {
-    Grammaire: {'he have': 'he has', 'she dont': 'she doesn’t', 'i am agree': 'I agree', 'could of been': 'could have been', 'these is': 'these are'},
-    Formulation: {'in order to': 'to', 'at this point in time': 'now', 'due to the fact that': 'because'}
+    Grammaire: {'he have': 'he has', 'she dont': 'she doesn’t', 'i am agree': 'I agree', 'could of been': 'could have been', 'these is': 'these are'}
   },
   es: {
-    Grammaire: {'yo a sido': 'yo he sido', 'la problema': 'el problema', 'muchas gracias por tú ayuda': 'muchas gracias por tu ayuda', 'voy ha hacer': 'voy a hacer'},
-    Formulation: {'con el fin de': 'para', 'en el día de hoy': 'hoy', 'por el hecho de que': 'porque'}
+    Grammaire: {'yo a sido': 'yo he sido', 'la problema': 'el problema', 'muchas gracias por tú ayuda': 'muchas gracias por tu ayuda', 'voy ha hacer': 'voy a hacer'}
   }
 };
 const clues = {
@@ -41,9 +35,8 @@ const rules = Object.fromEntries(Object.entries(forms).map(([id, groups]) => [id
   })))
 ]));
 export function ruleMatches(text, lang, style = true) {
-  const hits = [];
+  const hits = style ? rewrites(text,lang) : [];
   for (const {kind, pattern, replacement} of rules[lang] || []) {
-    if (!style && kind === 'Formulation') continue;
     for (const match of text.matchAll(pattern)) {
       const original = match[0];
       const value = original === original.toUpperCase() ? replacement.toUpperCase() :

@@ -26,6 +26,11 @@ try {
     await accept();
     assert.equal(await area.inputValue(),after);
   }
+  await area.fill('Je vous écris pour vous demander si Léa vient demain.');
+  await host.click();
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Enter');
+  assert.equal(await area.inputValue(),'J’aimerais savoir si Léa vient demain.');
   await area.fill('This is a speling mistake');
   await accept();
   assert.match(await area.inputValue(),/spelling/);
