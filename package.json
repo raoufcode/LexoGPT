@@ -1,0 +1,30 @@
+{
+  "name": "lexogpt",
+  "version": "1.0.0",
+  "description": "Assistant de rédaction multilingue hors ligne",
+  "scripts": {
+    "test": "node --test tests/rules.test.mjs",
+    "build": "node build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raoufcode/LexoGPT.git"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/raoufcode/LexoGPT/issues"
+  },
+  "homepage": "https://github.com/raoufcode/LexoGPT#readme",
+  "dependencies": {
+    "dictionary-en": "^4.0.0",
+    "dictionary-es": "^4.0.0",
+    "dictionary-fr": "^3.0.0",
+    "nspell": "^2.1.5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "fflate": "^0.8.3",
+    "playwright": "^1.65.1"
+  }
+}

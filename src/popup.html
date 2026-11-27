@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="fr"><meta charset="utf-8"><title>Lexo · Préférences</title>
+<style>
+*{box-sizing:border-box}body{width:300px;margin:0;padding:22px;background:#f6faf7;color:#193c30;font:14px/1.5 system-ui,sans-serif}h1{font:700 32px Georgia,serif;margin:0}p{margin:3px 0 17px;color:#50665c}label{display:flex;align-items:center;gap:8px;margin:12px 0}select{width:100%;font:inherit;padding:8px;background:white;border:1px solid #a5c3b3;border-radius:7px}input{accent-color:#195a42}small{display:block;border-top:1px solid #cbdbd1;padding-top:12px;color:#50665c}
+</style><h1>Lexo</h1><p>Assistant de rédaction hors ligne</p>
+<label><input id="enabled" type="checkbox">Activer les suggestions</label>
+<label for="mode">Langue du texte</label>
+<select id="mode"><option value="auto">Détection automatique</option><option value="fr">Français</option><option value="en">Anglais</option><option value="es">Espagnol</option></select>
+<label><input id="style" type="checkbox">Proposer des reformulations</label>
+<small>Les textes sont analysés sur cet appareil. Seules tes préférences sont enregistrées.</small>
+<script src="popup.js"></script></html>
